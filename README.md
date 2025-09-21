@@ -1,52 +1,50 @@
-# Cloud Enabled Deployment In Action with AWS
+# Cloud MySQL Project - Java 21
 
-This repository contains four projects:
+This project demonstrates saving and retrieving data using **Spring Boot**, **Hibernate**, and **MySQL** hosted on **Google Cloud Platform (GCP)**. The project uses **Java 21**.
 
-- course-service (Spring Boot + MySQL)
-- student-service (Spring Boot + MongoDB)
-- media-service (Spring Boot + Local file storage, can be extended to S3/MinIO)
-- frontend-app (React + TypeScript)
+---
 
-## Backend Services
+## Demo Video
 
-### 1. course-service
-- Entity: Course(id, name, duration)
-- Endpoints:
-  - GET /courses
-  - GET /courses/{id}
-  - POST /courses
-  - DELETE /courses/{id}
-- Default port: 8081
-- Configure MySQL settings
+A short demonstration of the project can be viewed here:  
+[Demo Video Link](https://drive.google.com/file/d/1Thxxm48m2vJPPB6pA-a74fvntzNrhFMh/view?usp=sharing)
 
-### 2. student-service
-- Document: Student(registrationNumber, fullName, address, contact, email)
-- Endpoints:
-  - GET /students
-  - GET /students/{id}
-  - POST /students
-  - DELETE /students/{id}
-- Default port: 8082
-- Configure MongoDB settings
+---
 
-### 3. media-service
-- Resource: files
-- Endpoints:
-  - POST /files (multipart/form-data: file)
-  - GET /files (list)
-  - GET /files/{id} (fetch)
-  - DELETE /files/{id} (delete)
-- Default port: 8083
-- Uses local disk storage at `./data/media` by default (override with env var `MEDIA_STORAGE_DIR`).
+## Features
 
-## Frontend (frontend-app)
-- React + TypeScript + MUI + Axios + Vite app with 3 sections: Courses, Students, Media
-- Scripts:
-  - npm run dev (Vite dev server)
-  - npm run build (TypeScript build + Vite build)
-  - npm run preview (Preview built app)
+- Save and retrieve data from a **Cloud SQL MySQL database**.
+- Automatic database creation using **Hibernate**.
+- Fully configured Spring Boot application with Java 21.
+- Clean commit history showcasing development progress.
 
-## Build
+---
+
+## Prerequisites
+
+- **Java 21**
+  ```bash
+  java -version
+---
+
+## Update the **application.properties** file with your GCP MySQL details:
+
+```spring.datasource.host=YOUR_PUBLIC_IP
+spring.datasource.host=34.68.180.238
+spring.datasource.port=3306
+spring.datasource.url=jdbc:mysql://${spring.datasource.host}:${spring.datasource.port}/eca_courses?createDatabaseIfNotExist=true
+spring.datasource.username=root
+spring.datasource.password=Himal@2005
+
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+```
+
+## Running The Project
 
 - Backend: run `mvn -q -e -DskipTests package` at repo root to build services.
 - Frontend: run `npm install` then `npm run dev` inside `frontend-app`.
+
+## 
+- Name  : G.Himal Nimsara Perera
+- SID   : 2301671017
+- Email : himalnimsara88@gmail.com
